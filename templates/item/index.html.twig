@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Items{% endblock %}
+
+{% block body %}
+    {% for message in app.flashes('information') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+    <div class="col">
+        <a class="btn float-right" href="{{ path('item.create') }}">
+            Create
+        </a>
+    </div>
+    <h2>List of all items</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <td>ID</td>
+            <td>Name</td>
+            <td>Type</td>
+            <td>Price</td>
+            <td>Actions</td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in items %}
+            <tr>
+                <td>{{ item.id }}</td>
+                <td>{{ item.name }}</td>
+                {% if item.type is not null %}
+                    <td>{{ item.type.name }}</td>
+                {% else %}
+                    N/A
+                {% endif %}
+
+                <td>{{ item.price }}</td>
+                <td>
+                    <a class="btn" href="{{ path('item.delete', {id: item.id}) }}">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
+

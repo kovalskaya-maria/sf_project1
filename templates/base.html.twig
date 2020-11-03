@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Factory{% endblock %}</title>
+        <link rel="stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="{{ path('index') }}">Factory</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('type.index') }}">Types</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('item.index') }}">Items</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('employee.index') }}">Employees</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('reception.index') }}">Receptions</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('sales.index') }}">Sales</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_login') }}">Sign in</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('register.index') }}">Sign up</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

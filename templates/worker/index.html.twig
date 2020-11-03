@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Workers{% endblock %}
+
+{% block body %}
+    {% for message in app.flashes('information') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+    <div class="col">
+        <a class="btn float-right" href="{{ path('worker.create') }}">
+            Create
+        </a>
+    </div>
+    <h2>List of all workers</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <td>ID</td>
+            <td>Login</td>
+            <td>Name</td>
+            <td>Password</td>
+            <td>Actions</td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for worker in workers %}
+            <tr>
+                <td>{{ worker.id }}</td>
+                <td>{{ worker.login }}</td>
+                <td>{{ worker.name }}</td>
+                <td>{{ worker.password }}</td>
+                <td>
+                    <a class="btn" href="{{ path('worker.delete', {id: item.id}) }}">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
+

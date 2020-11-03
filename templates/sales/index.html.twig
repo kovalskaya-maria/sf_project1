@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sales{% endblock %}
+
+{% block body %}
+    {% for message in app.flashes('information') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+    <div class="col">
+        <a class="btn float-right" href="{{ path('sales.create') }}">
+            Create
+        </a>
+    </div>
+    <h2>List of all sales</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <td>ID</td>
+            <td>Items</td>
+            <td>Date</td>
+            <td>Actions</td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for sales in sales %}
+            <tr>
+                <td>{{ sales.id }}</td>
+                <td>{% for item in sales.item %}
+                        {{ item.name }} <br>
+                    {% endfor %}
+                </td>
+                <td>{{ sales.date|date('d-m-Y') }}</td>
+                <td>
+                    <a class="btn" href="{{ path('sales.delete', {id: sales.id}) }}">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
+

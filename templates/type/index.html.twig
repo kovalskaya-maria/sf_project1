@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Types{% endblock %}
+
+{% block body %}
+    {% for message in app.flashes('information') %}
+    <div class="alert alert-success">
+        {{ message }}
+    </div>
+    {% endfor %}
+    <div class="col">
+        <a class="btn float-right" href="{{ path('type.create') }}">
+            Create
+        </a>
+    </div>
+    <h2>List of all types</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <td>ID</td>
+                <td>Name</td>
+                <td>Actions</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for type in types %}
+                <tr>
+                    <td>{{ type.id }}</td>
+                    <td>{{ type.name }}</td>
+                    <td>
+                        <a class="btn" href="{{ path('type.delete', {id: type.id}) }}">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+

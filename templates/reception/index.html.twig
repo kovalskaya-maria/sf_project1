@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Receptions{% endblock %}
+
+{% block body %}
+    {% for message in app.flashes('information') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+    <div class="col">
+        <a class="btn float-right" href="{{ path('reception.create') }}">
+            Create
+        </a>
+    </div>
+    <h2>List of all receptions</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <td>ID</td>
+            <td>Date</td>
+            <td>Employee</td>
+            <td>Item</td>
+            <td>Amount</td>
+            <td>Actions</td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for reception in receptions %}
+            <tr>
+                <td>{{ reception.id }}</td>
+                <td>{{ reception.date|date('d-m-Y') }}</td>
+                <td>{{ reception.employee.name }}</td>
+                <td>{{ reception.item.name }}</td>
+                <td>{{ reception.amount }}</td>
+                <td>
+                    <a class="btn" href="{{ path('reception.delete', {id: reception.id}) }}">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
+
