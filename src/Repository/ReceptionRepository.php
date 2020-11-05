@@ -19,6 +19,21 @@ class ReceptionRepository extends ServiceEntityRepository
         parent::__construct($registry, Reception::class);
     }
 
+
+    /**
+     * @return Reception[] Returns an array of Reception objects
+     */
+    public function findReceptionsByEmployee($employee, $date)
+    {
+        $this->createQueryBuilder('r')
+            ->andWhere('r.employee=:emp')
+            ->andWhere('r.date=:d')
+            ->setParameter('d', $date)
+            ->setParameter('emp', $employee)
+            ->getQuery()
+            ->getResult();
+    }
+
     // /**
     //  * @return Reception[] Returns an array of Reception objects
     //  */

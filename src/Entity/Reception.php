@@ -29,7 +29,7 @@ class Reception
     private $amount;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Employee::class, inversedBy="receptions")
+     * @ORM\ManyToOne(targetEntity=Employee::class)
      * @ORM\JoinColumn(nullable=false)
      */
     private $employee;

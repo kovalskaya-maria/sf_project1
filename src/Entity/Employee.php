@@ -25,35 +25,18 @@ class Employee
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity=Reception::class, mappedBy="employee")
+     *
      */
-    private $receptions;
+    /*private $receptions;
 
     public function __construct()
     {
         $this->receptions = new ArrayCollection();
     }
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    public function setName(string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
     /**
      * @return Collection|Reception[]
-     */
+
     public function getReceptions(): Collection
     {
         return $this->receptions;
@@ -80,4 +63,23 @@ class Employee
 
         return $this;
     }
+*/
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
 }
